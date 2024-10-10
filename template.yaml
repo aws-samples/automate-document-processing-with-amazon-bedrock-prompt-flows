@@ -1,9 +1,6 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
-Description: >
-  IDP with Amazon Textract and Amazon bedrock
-
-  Sample SAM Template for split-pdf-files
+Description: Automate document processing with Amazon Bedrock Prompt Flows (uksb-gr31c8w2f9).
 
 # More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
 Globals:
