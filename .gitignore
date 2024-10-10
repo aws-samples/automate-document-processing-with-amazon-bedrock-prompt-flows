@@ -1,0 +1,5 @@
+.aws-sam
+.ipynb_checkpoints
+.DS_Store
+__pycache__
+result_files
