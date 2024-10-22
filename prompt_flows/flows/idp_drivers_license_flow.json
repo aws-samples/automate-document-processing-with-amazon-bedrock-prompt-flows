@@ -212,30 +212,8 @@
         "Configuration": {
           "Prompt": {
             "SourceConfiguration": {
-              "Inline": {
-                "InferenceConfiguration": {
-                  "Text": {
-                    "MaxTokens": 1000,
-                    "Temperature": 0.5,
-                    "TopK": 50,
-                    "TopP": 0.5
-                  }
-                },
-                "ModelId": "anthropic.claude-3-sonnet-20240229-v1:0",
-                "TemplateConfiguration": {
-                  "Text": {
-                    "InputVariables": [
-                      {
-                        "Name": "licence_details"
-                      },
-                      {
-                        "Name": "date"
-                      }
-                    ],
-                    "Text": "Check the expiration date for this drivers licence and ensure that it has not expired. \n<licence>\n{{licence_details}}\n</license>\nTodays date is {{date}}\nIf the drivers license has expired, write a friendly email to the customer explning the problem and asking them to submit a valid document. \nIf the drivers licnese has not expired, retrun: DOC_OK"
-                  }
-                },
-                "TemplateType": "TEXT"
+              "Resource": {
+                "PromptArn": "${DriversLicenseCheckPromptArn}"
               }
             }
           }

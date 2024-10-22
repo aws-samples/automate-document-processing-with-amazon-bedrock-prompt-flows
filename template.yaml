@@ -554,3 +554,10 @@ Outputs:
   IDPClassesTable:
     Description: "DynamoDB Table for IDP Classes"
     Value: !Ref IDPClassesTable
+  CopySampleFiles:
+    Description: "Command to copy sample files"
+    Value: !Sub aws s3 sync ./sample_files/customer123 s3://${SourceS3Bucket}/customer123
+  GetResultFiles:
+    Description: "Command to download result files"
+    Value: !Sub aws s3 sync s3://${DestinationS3Bucket}/customer123 ./result_files/customer123 
+    

@@ -23,6 +23,7 @@
                   - Fn::GetAtt: [ClassifyPromptVersion1, Arn]
                   - Fn::GetAtt: [BankStatementPromptVersion1, Arn]
                   - Fn::GetAtt: [DriversLicensePromptVersion1, Arn]
+                  - Fn::GetAtt: [DriversLicenseCheckPromptVersion1, Arn]
                   - Fn::GetAtt: [URLAAnalyzePromptVersion1, Arn]
                   - Fn::GetAtt: [URLAToJsonPromptVersion1, Arn]
                   - Fn::GetAtt: [ForReviewPromptVersion1, Arn]
@@ -215,6 +216,39 @@
       PromptArn: 
         Fn::GetAtt: [DriversLicensePrompt, Arn]
 
+  DriversLicenseCheckPrompt:
+    Type: AWS::Bedrock::Prompt
+    Properties:
+      Description: Prompt to check drivers_license documents
+      Name: 
+        Fn::Sub: ${AWS::StackName}-IDP_DRIVERS_LIC_CHECK
+      Variants: 
+        - Name: Version1
+          InferenceConfiguration: 
+            Text:
+              MaxTokens: 2000
+              Temperature: 0.5
+              TopK: 50
+              TopP: 0.99
+          ModelId: 
+            Ref: BedrockPromptModelId
+          TemplateConfiguration: 
+            Text:
+              InputVariables: 
+                - Name: doc_text
+              TextS3Location:
+                Bucket: 
+                  Ref: PromptFlowsBucket
+                Key: 
+                  Fn::Sub: ${PromptFlowsKeyPath}/prompts/idp_drivers_license_check_prompt.txt 
+          TemplateType: TEXT
+
+  DriversLicenseCheckPromptVersion1:
+    Type: AWS::Bedrock::PromptVersion
+    Properties:
+      PromptArn: 
+        Fn::GetAtt: [DriversLicenseCheckPrompt, Arn]
+  
   DriversLicenseFlow:
     Type: AWS::Bedrock::Flow
     Properties:
@@ -226,6 +260,8 @@
       DefinitionSubstitutions:
         DriversLicenseToJsonPromptArn: 
           Fn::GetAtt: [DriversLicensePromptVersion1, Arn]
+        DriversLicenseCheckPromptArn: 
+          Fn::GetAtt: [DriversLicenseCheckPromptVersion1, Arn]
         DestinationBucket: 
           Ref: DestinationS3Bucket
       Description: Class for drivers license. Should contain date of birth or DOB, expiration date, drivers licence number or DL
