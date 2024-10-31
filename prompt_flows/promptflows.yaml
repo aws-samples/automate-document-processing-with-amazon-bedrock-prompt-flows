@@ -59,7 +59,6 @@
             Text:
               MaxTokens: 2000
               Temperature: 0.5
-              TopK: 250
               TopP: 0.99
           ModelId: 
             Ref: BedrockPromptModelId
@@ -126,7 +125,6 @@
             Text:
               MaxTokens: 2000
               Temperature: 0.5
-              TopK: 250
               TopP: 0.99
           ModelId: 
             Ref: BedrockPromptModelId
@@ -195,7 +193,6 @@
             Text:
               MaxTokens: 2000
               Temperature: 0.5
-              TopK: 250
               TopP: 0.99
           ModelId: 
             Ref: BedrockPromptModelId
@@ -228,7 +225,6 @@
             Text:
               MaxTokens: 2000
               Temperature: 0.5
-              TopK: 50
               TopP: 0.99
           ModelId: 
             Ref: BedrockPromptModelId
@@ -298,7 +294,6 @@
             Text:
               MaxTokens: 2000
               Temperature: 0.5
-              TopK: 250
               TopP: 0.99
           ModelId: 
             Ref: BedrockPromptModelId
@@ -331,7 +326,6 @@
             Text:
               MaxTokens: 2000
               Temperature: 0.5
-              TopK: 250
               TopP: 0.99
           ModelId: 
             Ref: BedrockPromptModelId
@@ -401,7 +395,6 @@
             Text:
               MaxTokens: 2000
               Temperature: 0.5
-              TopK: 250
               TopP: 0.99
           ModelId: 
             Ref: BedrockPromptModelId
